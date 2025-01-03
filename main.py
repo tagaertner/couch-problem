@@ -7,7 +7,39 @@ class Couch:
     def area(self):
         return self.width * self.length
 
+class SleeperSofa(Couch):
+    def __init__(self, length, width,folded_out=False, sheets=None):
+        super().__init__(length, width)
+        self.folded_out = False
+        self.sheets = None
+    
+    def convert(self):
+            
+        if not self.folded_out:
+            self.folded_out = True
+            self.width *= 2
+        elif self.folded_out and self.sheets is None:
+            self.folded_out = False
+            self.width /= 2
+    
+    def put_on_sheets(self,sheets):
+        if self.folded_out and self.sheets is None:
+            self.sheets = sheets 
+        
+            
+    def remove_sheets(self):
+        self.sheets = None
 
+class Sheets:
+    def __init__(self, material="cotton"):
+        self.material = material 
+        
+cotton_sheets = Sheets()
+  
+        
+        
+        
+    
 ##########################################
 #       Add your new classes here!       #
 # (Make sure not to accidentally indent) #
